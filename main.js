@@ -17,17 +17,20 @@ const btnDeleteAll = document.querySelector("#deleteAll");
 if (list.length > 0) {
   btnDeleteAll.style.display = "";
 }
-
-// buat element icon
+if (list.length == 0) {
+}
 
 const tampilkanData = () => {
   list.forEach(element => {
     const i = document.createElement("i");
-    const p = document.createElement("span");
+    const span = document.createElement("span");
     let li = document.createElement("li");
-    p.appendChild(document.createTextNode(element.nama));
-    li.appendChild(p);
+    span.appendChild(document.createTextNode(element.nama));
+    li.appendChild(span);
     ul.appendChild(li);
+    if (element.selesai == true) {
+      span.style.textDecoration = "line-through";
+    }
     li.classList.add("list-group-item");
     li.appendChild(i);
     i.classList.add("far");
@@ -41,7 +44,10 @@ const input = document.querySelector("input[type=text]");
 // tambah data
 const add = namaList => {
   let dataList = list;
-  let data = { nama: namaList };
+  let data = {
+    nama: namaList,
+    selesai: false,
+  };
   dataList.push(data);
   let addList = JSON.stringify(dataList);
   localStorage.setItem("dataList", addList);
@@ -93,6 +99,10 @@ btnDeleteAll.addEventListener("click", function () {
 // jika list di klik coret
 ul.addEventListener("click", function (e) {
   if (e.target.tagName == "LI") {
-    e.target.children[0].style.textDecoration = "line-through";
+    let tes = list.find(data => data.nama == e.target.children[0].innerText);
+    tes.selesai = true;
+    let newData = JSON.stringify(list);
+    localStorage.setItem("dataList", newData);
+    location.reload();
   }
 });

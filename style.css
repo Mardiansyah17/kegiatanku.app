@@ -1,10 +1,16 @@
 li:hover{
     background-color: #0d6efd;
     color: white;
+    cursor: pointer;
     
 }
 #container {
     background-color: rgb(243, 243, 243);
+  }
+  ul{
+      border: 1px solid black;
+      height: 400px;
+      overflow: auto;
   }
 
   i {

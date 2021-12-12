@@ -11,6 +11,13 @@ const loadData = () => {
 };
 let list = loadData();
 
+// tampilkan tombol hapus semua jika ada isi
+const btnDeleteAll = document.querySelector("#deleteAll");
+
+if (list.length > 0) {
+  btnDeleteAll.style.display = "";
+}
+
 // buat element icon
 
 const tampilkanData = () => {
@@ -39,6 +46,8 @@ const add = namaList => {
   let addList = JSON.stringify(dataList);
   localStorage.setItem("dataList", addList);
 };
+
+// hapus function
 const hapus = nama => {
   let newlist = list.filter(e => e.nama !== nama);
   let data = JSON.stringify(newlist);
@@ -50,6 +59,9 @@ btn.addEventListener("click", function () {
   add(input.value);
   ul.innerHTML = "";
   tampilkanData();
+  if (list.length > 0) {
+    btnDeleteAll.style.display = "";
+  }
 });
 input.addEventListener("keyup", function (e) {
   if (e.keyCode === 13) {
@@ -57,13 +69,30 @@ input.addEventListener("keyup", function (e) {
     ul.innerHTML = "";
     tampilkanData();
     input.value = "";
+    if (list.length > 0) {
+      btnDeleteAll.style.display = "";
+    }
   }
 });
 
+// jika tombol hapus di klik hapus list tersebut
 ul.addEventListener("click", function (e) {
   if (e.target.tagName == "I") {
     hapus(e.target.parentElement.innerText);
 
     location.reload();
+  }
+});
+
+// Hapus Semua
+btnDeleteAll.addEventListener("click", function () {
+  localStorage.setItem("dataList", "[]");
+  location.reload();
+});
+
+// jika list di klik coret
+ul.addEventListener("click", function (e) {
+  if (e.target.tagName == "LI") {
+    e.target.children[0].style.textDecoration = "line-through";
   }
 });

@@ -3,3 +3,17 @@ li:hover{
     color: white;
     
 }
+#container {
+    background-color: rgb(243, 243, 243);
+  }
+
+  i {
+    cursor: pointer;
+    font-size: 18px;
+
+    width: 30px;
+  }
+  i:hover {
+    color: red;
+  }
+  

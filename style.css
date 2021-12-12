@@ -8,7 +8,7 @@ li:hover{
     background-color: rgb(243, 243, 243);
   }
   ul{
-      border: 1px solid black;
+      
       height: 400px;
       overflow: auto;
   }

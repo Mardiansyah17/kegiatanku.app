@@ -13,11 +13,10 @@ let list = loadData();
 
 // tampilkan tombol hapus semua jika ada isi
 const btnDeleteAll = document.querySelector("#deleteAll");
-
+const h4 = document.querySelector(".h4");
 if (list.length > 0) {
   btnDeleteAll.style.display = "";
-}
-if (list.length == 0) {
+  h4.style.display = "none";
 }
 
 const tampilkanData = () => {
@@ -31,6 +30,7 @@ const tampilkanData = () => {
     if (element.selesai == true) {
       span.style.textDecoration = "line-through";
     }
+
     li.classList.add("list-group-item");
     li.appendChild(i);
     i.classList.add("far");

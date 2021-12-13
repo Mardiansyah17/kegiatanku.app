@@ -3,8 +3,14 @@ const containerList = document.querySelector(".list");
 if (localStorage.length == 0) {
   localStorage.setItem("dataList", "[]");
 }
+
+// jika di layar hp hapus shadow dan atur lebar
 if (window.screen.width < 400) {
   ul.classList.remove("shadow-lg", "p-3", "mb-5", "rounded");
+}
+const inputContainer = document.querySelector("#input_container");
+if (window.screen.width < 400) {
+  inputContainer.classList.replace("col-md-5", "col-10");
 }
 const loadData = () => {
   let fileLocalStorage = localStorage.getItem("dataList");

@@ -74,6 +74,7 @@ btn.addEventListener("click", function () {
   add(input.value);
   ul.innerHTML = "";
   tampilkanData();
+  input.value ="";
   if (list.length > 0) {
     btnDeleteAll.style.display = "";
   }

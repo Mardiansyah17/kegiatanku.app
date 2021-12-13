@@ -3,6 +3,9 @@ const containerList = document.querySelector(".list");
 if (localStorage.length == 0) {
   localStorage.setItem("dataList", "[]");
 }
+if (window.screen.width < 400) {
+  ul.classList.remove("shadow-lg", "p-3", "mb-5", "rounded");
+}
 const loadData = () => {
   let fileLocalStorage = localStorage.getItem("dataList");
   let dataList = JSON.parse(fileLocalStorage);
